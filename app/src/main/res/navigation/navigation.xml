@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/collaboratorListFragment">
+
+    <fragment
+        android:id="@+id/collaboratorListFragment"
+        android:name="com.emma.mycollaborators20.view.ui.fragments.CollaboratorListFragment"
+        android:label="CollaboratorListFragment" >
+        <action
+            android:id="@+id/action_collaboratorListFragment_to_addNewCollaboratorFragment"
+            app:destination="@id/addNewCollaboratorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNewCollaboratorFragment"
+        android:name="com.emma.mycollaborators20.view.ui.fragments.AddNewCollaboratorFragment"
+        android:label="add_new_collaborator_fragment"
+        tools:layout="@layout/add_new_collaborator_fragment" >
+        <action
+            android:id="@+id/action_addNewCollaboratorFragment_to_collaboratorListFragment"
+            app:destination="@id/collaboratorListFragment" />
+    </fragment>
+</navigation>
