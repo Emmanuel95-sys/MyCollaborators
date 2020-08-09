@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "collaborators_table")
 data class CollaboratorRoom(
     @PrimaryKey(autoGenerate = true)
-    var id : Long,
+    var id : Long = 0L,
 
     @ColumnInfo(name = "json_id")
     var jsonId : String,
