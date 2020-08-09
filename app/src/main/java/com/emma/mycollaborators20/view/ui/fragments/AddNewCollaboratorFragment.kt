@@ -17,7 +17,6 @@ import com.emma.mycollaborators20.viewmodel.AddNewCollaboratorViewModelFactory
 
 class AddNewCollaboratorFragment : Fragment() {
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
@@ -27,6 +26,7 @@ class AddNewCollaboratorFragment : Fragment() {
         val application = requireNotNull(this.activity).application
 
         val dataSource = CollaboratorDatabase.getInstance(application).collaboratorDatabaseDao
+        
         val viewModelFactory = AddNewCollaboratorViewModelFactory(dataSource, application)
 
         val addCollaboratorListViewModel = ViewModelProvider(this,
