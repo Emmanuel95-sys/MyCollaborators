@@ -18,7 +18,6 @@ import com.emma.mycollaborators20.viewmodel.CollaboratorListViewModelFactory
 
 class CollaboratorListFragment : Fragment() {
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
         //put all the dependencies wrap ALL layouts in a layout tag
@@ -33,6 +32,12 @@ class CollaboratorListFragment : Fragment() {
         //create a view model // CHECK IF THIS IS WORKING!!!!!!
         val collaboratorListViewModel = ViewModelProvider(this,
             viewModelFactory).get(CollaboratorListViewModel::class.java)
+        //specify lifecycle owner
+        binding.setLifecycleOwner(this)
+        //view model layout variable
+        binding.collaboratorListViewModelFromLayout = collaboratorListViewModel
+
+        
         return binding.root
     }
 
