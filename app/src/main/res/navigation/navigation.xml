@@ -19,10 +19,18 @@
     <fragment
         android:id="@+id/collaboratorListFragment"
         android:name="com.emma.mycollaborators20.view.ui.fragments.CollaboratorListFragment"
-        android:label="CollaboratorListFragment" />
+        android:label="CollaboratorListFragment" >
+        <action
+            android:id="@+id/action_collaboratorListFragment_to_chooserFragment"
+            app:destination="@id/chooserFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addNewCollaboratorFragment"
         android:name="com.emma.mycollaborators20.view.ui.fragments.AddNewCollaboratorFragment"
         android:label="add_new_collaborator_fragment"
-        tools:layout="@layout/add_new_collaborator_fragment" />
+        tools:layout="@layout/add_new_collaborator_fragment" >
+        <action
+            android:id="@+id/action_addNewCollaboratorFragment_to_chooserFragment"
+            app:destination="@id/chooserFragment" />
+    </fragment>
 </navigation>

@@ -1,7 +1,12 @@
 package com.emma.mycollaborators20.viewmodel
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import com.emma.mycollaborators20.model.localdb.CollaboratorDatabaseDao
 
-class CollaboratorListViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class CollaboratorListViewModel (val database : CollaboratorDatabaseDao,
+application: Application): AndroidViewModel(application) {
+
+
+
 }

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 
 import com.emma.mycollaborators20.R
+import com.emma.mycollaborators20.databinding.CollaboratorListFragmentBinding
 
 
 class CollaboratorListFragment : Fragment() {
@@ -15,11 +16,12 @@ class CollaboratorListFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
-
-        //val binding: FragmentCollaboratorListBinding = DataBindingUtil.inflate(inflater,
-        //  R.layout.collaborator_list_fragment, container, false)
-
-        return inflater.inflate(R.layout.collaborator_list_fragment, container, false)
+        //put all the dependencies wrap ALL layouts in a layout tag
+        val binding: CollaboratorListFragmentBinding  = DataBindingUtil.inflate(inflater,
+          R.layout.collaborator_list_fragment, container, false)
+        //
+        
+        return binding.root
     }
 
 
