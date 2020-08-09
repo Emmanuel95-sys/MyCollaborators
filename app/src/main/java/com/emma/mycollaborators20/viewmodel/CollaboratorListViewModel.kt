@@ -7,6 +7,4 @@ import com.emma.mycollaborators20.model.localdb.CollaboratorDatabaseDao
 class CollaboratorListViewModel (val database : CollaboratorDatabaseDao,
 application: Application): AndroidViewModel(application) {
 
-
-
 }

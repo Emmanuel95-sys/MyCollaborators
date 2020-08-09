@@ -17,24 +17,24 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/MyCollaborators"
+            android:id="@+id/MyCollaboratorsButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mis colaboradores"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/AddCollaborator"
+            app:layout_constraintBottom_toTopOf="@+id/AddCollaboratorButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/AddCollaborator"
+            android:id="@+id/AddCollaboratorButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Agregar Colaborador"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/MyCollaborators" />
+            app:layout_constraintTop_toBottomOf="@+id/MyCollaboratorsButton" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

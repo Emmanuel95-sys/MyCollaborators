@@ -2,6 +2,7 @@
 
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     >
     <data>
@@ -10,16 +11,38 @@
             type="com.emma.mycollaborators20.viewmodel.CollaboratorListViewModel" />
     </data>
 
-<FrameLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.ui.fragments.CollaboratorListFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="List of Collaborators" />
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/collaboratorListFragment"/>
 
-</FrameLayout>
+    <Button
+        android:id="@+id/collaboratorListFragment"
+        android:layout_width="0dp"
+        android:text="Colaboradores"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/collaboratorMap"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+
+    <Button
+        android:id="@+id/collaboratorMap"
+        android:layout_width="0dp"
+        android:text="Mapa"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/collaboratorListFragment" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

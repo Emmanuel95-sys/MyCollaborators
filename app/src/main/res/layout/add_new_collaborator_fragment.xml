@@ -3,7 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-
+        <variable
+            name = "addNewCollaboratorViewModelFromLayout"
+            type="com.emma.mycollaborators20.viewmodel.AddNewCollaboratorViewModel"
+            />
     </data>
 
 <FrameLayout
