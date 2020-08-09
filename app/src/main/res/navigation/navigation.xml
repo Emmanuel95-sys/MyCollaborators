@@ -3,23 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/collaboratorListFragment">
-
+    app:startDestination="@id/chooserFragment">
+    <fragment
+        android:id="@+id/chooserFragment"
+        android:name="com.emma.mycollaborators20.view.ui.fragments.ChooserFragment"
+        android:label="chooser_fragment"
+        tools:layout="@layout/chooser_fragment" >
+        <action
+            android:id="@+id/action_chooserFragment_to_collaboratorListFragment"
+            app:destination="@id/collaboratorListFragment" />
+        <action
+            android:id="@+id/action_chooserFragment_to_addNewCollaboratorFragment"
+            app:destination="@id/addNewCollaboratorFragment" />
+    </fragment>
     <fragment
         android:id="@+id/collaboratorListFragment"
         android:name="com.emma.mycollaborators20.view.ui.fragments.CollaboratorListFragment"
-        android:label="CollaboratorListFragment" >
-        <action
-            android:id="@+id/action_collaboratorListFragment_to_addNewCollaboratorFragment"
-            app:destination="@id/addNewCollaboratorFragment" />
-    </fragment>
+        android:label="CollaboratorListFragment" />
     <fragment
         android:id="@+id/addNewCollaboratorFragment"
         android:name="com.emma.mycollaborators20.view.ui.fragments.AddNewCollaboratorFragment"
         android:label="add_new_collaborator_fragment"
-        tools:layout="@layout/add_new_collaborator_fragment" >
-        <action
-            android:id="@+id/action_addNewCollaboratorFragment_to_collaboratorListFragment"
-            app:destination="@id/collaboratorListFragment" />
-    </fragment>
+        tools:layout="@layout/add_new_collaborator_fragment" />
 </navigation>
