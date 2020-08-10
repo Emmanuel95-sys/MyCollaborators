@@ -13,7 +13,7 @@ interface CollaboratorDatabaseDao {
 
     //get all collaborators
     @Query("SELECT * FROM collaborators_table ORDER BY id DESC")
-    fun getAllCollaborators() : LiveData<List<CollaboratorRoom>>
+    fun getAllCollaborators() : List<CollaboratorRoom>
 
     //get collaborator by id
     @Query("SELECT * FROM collaborators_table WHERE id = :key")

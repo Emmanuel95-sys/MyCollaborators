@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 
 import com.emma.mycollaborators20.R
 import com.emma.mycollaborators20.databinding.AddNewCollaboratorFragmentBinding
@@ -32,6 +33,23 @@ class AddNewCollaboratorFragment : Fragment() {
         val addCollaboratorListViewModel = ViewModelProvider(this,
             viewModelFactory).get(AddNewCollaboratorViewModel::class.java)
         binding.setLifecycleOwner(this)
+
+        binding.AddNewButton.setOnClickListener {
+            //capture the strings
+            var name = binding.addNewNameET.text.toString()
+            var mail = binding.addNewMailET.text.toString()
+            var lat = binding.addNewLatET.text.toString()
+            var log = binding.addNewLogET.text.toString()
+            //here we can use validations using regex
+            if(lat == "" || log ==""){
+                lat = "19.${(0..30).random()}52213"
+                log = "-99.${(0..30).random()}32828"
+            }
+            //call the view model method
+            addCollaboratorListViewModel.addCollaborator(name, mail, lat ,log)
+            findNavController().navigate(R.id.action_addNewCollaboratorFragment_to_addedCollaboratorFragment)
+        }
+
 
         binding.addNewCollaboratorViewModelFromLayout = addCollaboratorListViewModel
 

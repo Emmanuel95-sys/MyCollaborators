@@ -13,6 +13,6 @@ data class CollaboratorRoom(
     var name : String = "Dummy name",
     var mail: String = "defaultemail@dummy.com",
     var lat : String = "19.7824456",
-    val log : String = "-99.3975891"
+    var log : String = "-99.3975891"
 
 )

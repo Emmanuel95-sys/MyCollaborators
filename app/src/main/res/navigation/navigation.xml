@@ -30,7 +30,16 @@
         android:label="add_new_collaborator_fragment"
         tools:layout="@layout/add_new_collaborator_fragment" >
         <action
-            android:id="@+id/action_addNewCollaboratorFragment_to_chooserFragment"
+            android:id="@+id/action_addNewCollaboratorFragment_to_addedCollaboratorFragment"
+            app:destination="@id/addedCollaboratorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addedCollaboratorFragment"
+        android:name="com.emma.mycollaborators20.view.ui.fragments.AddedCollaboratorFragment"
+        android:label="fragment_added_collaborator"
+        tools:layout="@layout/fragment_added_collaborator" >
+        <action
+            android:id="@+id/action_addedCollaboratorFragment_to_chooserFragment"
             app:destination="@id/chooserFragment" />
     </fragment>
 </navigation>
