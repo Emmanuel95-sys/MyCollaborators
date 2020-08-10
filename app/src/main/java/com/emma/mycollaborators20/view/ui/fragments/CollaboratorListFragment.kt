@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 
 import com.emma.mycollaborators20.R
 import com.emma.mycollaborators20.databinding.CollaboratorListFragmentBinding
 import com.emma.mycollaborators20.model.localdb.CollaboratorDatabase
+import com.emma.mycollaborators20.view.adapters.CollaboratorAdapter
 import com.emma.mycollaborators20.viewmodel.CollaboratorListViewModel
 import com.emma.mycollaborators20.viewmodel.CollaboratorListViewModelFactory
 
@@ -35,6 +37,18 @@ class CollaboratorListFragment : Fragment() {
         binding.setLifecycleOwner(this)
         //view model layout variable
         binding.collaboratorListViewModelFromLayout = collaboratorListViewModel
+        //make adapter
+        val adapter = CollaboratorAdapter()
+        binding.collaboratorRV.adapter = adapter
+
+        adapter.collaborators = collaboratorListViewModel.collaborators
+//        collaboratorListViewModel.collaborators.observe(viewLifecycleOwner, Observer {
+//            it.let {
+//                adapter.collaborators = it
+//            }
+//        })
+
+        binding.setLifecycleOwner(this)
 
         return binding.root
     }

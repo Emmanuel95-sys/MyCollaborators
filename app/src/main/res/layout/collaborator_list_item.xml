@@ -41,14 +41,14 @@
                 android:id="@+id/tvItemCollaboratorName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="Nombre de la conferencia"
+                tools:text="Nombre del colaborador"
                 android:textSize="20sp"
                 android:textColor="@color/colorPrimaryDark"
                 android:ellipsize="end"
                 android:lines="1"
                 />
             <TextView
-                android:id="@+id/tvItemScheduleConferenceSpeaker"
+                android:id="@+id/tvItemCollaboratorEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="Collaborator email"
