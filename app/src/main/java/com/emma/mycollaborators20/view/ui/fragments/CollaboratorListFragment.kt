@@ -36,7 +36,6 @@ class CollaboratorListFragment : Fragment() {
         //view model layout variable
         binding.collaboratorListViewModelFromLayout = collaboratorListViewModel
 
-
         return binding.root
     }
 

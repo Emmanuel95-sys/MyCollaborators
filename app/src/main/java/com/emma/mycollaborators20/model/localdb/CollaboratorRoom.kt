@@ -8,12 +8,11 @@ import androidx.room.PrimaryKey
 data class CollaboratorRoom(
     @PrimaryKey(autoGenerate = true)
     var id : Long = 0L,
-
     @ColumnInfo(name = "json_id")
-    var jsonId : String,
-    var name : String,
-    var mail: String,
-    var lat : String,
-    val log : String
+    var jsonId:String = "no json id",
+    var name : String = "Dummy name",
+    var mail: String = "defaultemail@dummy.com",
+    var lat : String = "19.7824456",
+    val log : String = "-99.3975891"
 
 )

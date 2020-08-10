@@ -50,4 +50,22 @@ class SleepDatabaseTest {
         Assert.assertEquals(collaboratorFromDb, collaborator)
     }
 
+    @Test
+    @Throws(Exception::class)
+    fun insertAndGetCollaborators() {
+
+        val collaborator = CollaboratorRoom(1,"145", "Emmanuel", "emma@gmail.com", "19.2", "-45.21")
+        collaboratorDao.insert(collaborator)
+
+        val collaborator2 = CollaboratorRoom(2,"148", "Diana", "Diana@gmail.com", "19.782", "-45.2141")
+        collaboratorDao.insert(collaborator2)
+
+        val collaboratorsLiveData = collaboratorDao.getAllCollaborators()
+        val collaboratorsList = collaboratorsLiveData.value
+
+        Log.i("TestCase2", collaboratorsList.toString())
+        Assert.assertEquals(2,collaboratorsList?.size )
+    }
+
+
 }
