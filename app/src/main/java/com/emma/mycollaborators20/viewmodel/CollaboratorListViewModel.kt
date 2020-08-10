@@ -14,19 +14,17 @@ application: Application): AndroidViewModel(application) {
         super.onCleared()
         viewModelJob.cancel()
     }
-    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
-   var collaborators = database.getAllCollaborators()
+//    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+    var collaborators = database.getAllCollaborators()
+//    fun retrieveCollaborators() {
+//        uiScope.launch {
+//            retrieveCollaboratorsFromRoom()
+//        }
+//    }
 
-    fun retrieveCollaborator() {
-        uiScope.launch {
-            retrieveCollaboratorsFromRoom()
-        }
-    }
-
-    private suspend fun retrieveCollaboratorsFromRoom() {
-        withContext(Dispatchers.IO){
-            database.getAllCollaborators()
-        }
-    }
-
+//    private suspend fun retrieveCollaboratorsFromRoom() {
+//        withContext(Dispatchers.IO){
+//            database.getAllCollaborators()
+//        }
+//    }
 }
