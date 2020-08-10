@@ -15,15 +15,15 @@ application: Application): AndroidViewModel(application) {
         viewModelJob.cancel()
     }
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
-//     var collaborators = database.getAllCollaborators()
+   var collaborators = database.getAllCollaborators()
 
-    fun retrieveCollaborator() : List<CollaboratorRoom>{
+    fun retrieveCollaborator() {
         uiScope.launch {
             retrieveCollaboratorsFromRoom()
         }
     }
 
-    private suspend fun retrieveCollaboratorsFromRoom() : List<CollaboratorRoom>{
+    private suspend fun retrieveCollaboratorsFromRoom() {
         withContext(Dispatchers.IO){
             database.getAllCollaborators()
         }

@@ -37,16 +37,18 @@ class CollaboratorListFragment : Fragment() {
         binding.setLifecycleOwner(this)
         //view model layout variable
         binding.collaboratorListViewModelFromLayout = collaboratorListViewModel
+
         //make adapter
         val adapter = CollaboratorAdapter()
         binding.collaboratorRV.adapter = adapter
 
-        adapter.collaborators = collaboratorListViewModel.collaborators
-//        collaboratorListViewModel.collaborators.observe(viewLifecycleOwner, Observer {
-//            it.let {
-//                adapter.collaborators = it
-//            }
-//        })
+        //regular list approach
+        //adapter.collaborators = collaboratorListViewModel.retrieveCollaborator()
+        collaboratorListViewModel.collaborators.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                adapter.collaboratorsAdapter = it
+            }
+        })
 
         binding.setLifecycleOwner(this)
 
