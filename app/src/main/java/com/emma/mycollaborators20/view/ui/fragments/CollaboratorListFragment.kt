@@ -45,10 +45,12 @@ class CollaboratorListFragment : Fragment() {
 
         collaboratorListViewModel.collaborators.observe(viewLifecycleOwner, Observer {
             it?.let {
+                adapter.collaboratorsData = it
                 Log.i("CollaboratorFragment",it.toString())
-                adapter.collaboratorsAdapter = it
             }
         })
+
+
         binding.setLifecycleOwner(this)
         return binding.root
     }

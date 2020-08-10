@@ -10,15 +10,14 @@ import com.emma.mycollaborators20.model.localdb.CollaboratorRoom
 
 class CollaboratorAdapter :  RecyclerView.Adapter<CollaboratorAdapter.ViewHolder>() {
 
-    var collaboratorsAdapter = listOf<CollaboratorRoom>()
+    var collaboratorsData = listOf<CollaboratorRoom>()
 
     //notifying RV about changes
     set(value){
         field = value
         notifyDataSetChanged()
     }
-    override fun onCreateViewHolder(
-        parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val view = layoutInflater.inflate(R.layout.collaborator_list_item,
             parent, false)
@@ -26,11 +25,11 @@ class CollaboratorAdapter :  RecyclerView.Adapter<CollaboratorAdapter.ViewHolder
     }
 
     override fun getItemCount(): Int {
-        return collaboratorsAdapter.size
+        return collaboratorsData.size
     }
 
-    override fun onBindViewHolder(holder: CollaboratorAdapter.ViewHolder, position: Int) {
-        val currentCollaborator  = collaboratorsAdapter[position]
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val currentCollaborator  = collaboratorsData[position]
         holder.itemCollaboratorName.text = currentCollaborator.name
         holder.itemCollaboratorEmail.text = currentCollaborator.mail
     }
@@ -39,6 +38,4 @@ class CollaboratorAdapter :  RecyclerView.Adapter<CollaboratorAdapter.ViewHolder
         var itemCollaboratorName : TextView = itemView.findViewById(R.id.tvItemCollaboratorName)
         var itemCollaboratorEmail : TextView = itemView.findViewById(R.id.tvItemCollaboratorEmail)
     }
-
-
 }
