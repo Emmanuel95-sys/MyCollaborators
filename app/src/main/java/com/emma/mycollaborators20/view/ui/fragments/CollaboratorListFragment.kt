@@ -31,23 +31,20 @@ class CollaboratorListFragment : Fragment() {
         val dataSource = CollaboratorDatabase.getInstance(application).collaboratorDatabaseDao
         //view model factory reference
         val viewModelFactory = CollaboratorListViewModelFactory(dataSource, application)
-        //create a view model // CHECK IF THIS IS WORKING!!!!!!
+        //create a view model
         val collaboratorListViewModel =
             ViewModelProvider(
                 this, viewModelFactory).get(CollaboratorListViewModel::class.java)
-
         //view model layout variable
         binding.collaboratorListViewModelFromLayout = collaboratorListViewModel
 
         //make adapter
         val adapter = CollaboratorAdapter()
         binding.collaboratorRV.adapter = adapter
-
         collaboratorListViewModel.collaborators.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.collaboratorsData = it
-                Log.i("CollaboratorFragment",it.toString())
-            }
+        }
         })
 
 
