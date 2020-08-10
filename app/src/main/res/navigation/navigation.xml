@@ -41,5 +41,8 @@
         <action
             android:id="@+id/action_addedCollaboratorFragment_to_chooserFragment"
             app:destination="@id/chooserFragment" />
+        <action
+            android:id="@+id/action_addedCollaboratorFragment_to_addNewCollaboratorFragment"
+            app:destination="@id/addNewCollaboratorFragment" />
     </fragment>
 </navigation>

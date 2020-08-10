@@ -29,11 +29,16 @@ application: Application) : AndroidViewModel(application) {
     //reference to collaborators from room
     //var collaboratorsFromDb = database.getAllCollaborators()
     //function to call when pressing addCollaborators
-    fun addCollaborator(name: String, mail : String, lat:String, log:String ){
+    fun addCollaborator(name: String?, mail : String?, lat:String, log:String ){
         uiScope.launch {
             val newCollaborator = CollaboratorRoom()
-            newCollaborator.name = name
-            newCollaborator.mail = mail
+
+            if(name != "" && name != null){
+                newCollaborator.name = name
+            }
+            if(mail != ""&& mail != null){
+                newCollaborator.mail = mail
+            }
             newCollaborator.lat = lat
             newCollaborator.log = log
             //get values from edit text
