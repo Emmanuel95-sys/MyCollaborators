@@ -10,7 +10,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/collabor_login"
-    tools:context=".view.ui.fragments.ChooserFragment">
+    tools:context=".viewViewModel.ui.fragments.ChooserFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

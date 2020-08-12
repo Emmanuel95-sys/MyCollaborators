@@ -1,11 +1,8 @@
-package com.emma.mycollaborators20.viewmodel
+package com.emma.mycollaborators20.viewViewModel.ui.fragments.addnewcollaborator
 
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.emma.mycollaborators20.model.localdb.CollaboratorDatabaseDao
 import com.emma.mycollaborators20.model.localdb.CollaboratorRoom
 import kotlinx.coroutines.*
@@ -13,16 +10,16 @@ import kotlinx.coroutines.*
 class AddNewCollaboratorViewModel(val database: CollaboratorDatabaseDao,
 application: Application) : AndroidViewModel(application) {
     //create a job allows to cancel all co-routines created by this view model
-    private var viewModeJob = Job()
+    private var viewModelJob = Job()
     //web service instance
 
     //when a viewModel is destroyed onCleared is called
     override fun onCleared() {
         super.onCleared()
-        viewModeJob.cancel()
+        viewModelJob.cancel()
     }
     //Define the scope of the co-routines
-    private val uiScope = CoroutineScope(Dispatchers.Main + viewModeJob)
+    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
     //reference to current collaborator?
     //private var collaboratorFromDB = database.getCollaborator(15)
 

@@ -1,4 +1,4 @@
-package com.emma.mycollaborators20.view.ui.fragments
+package com.emma.mycollaborators20.viewViewModel.ui.fragments.addnewcollaborator
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,8 +12,6 @@ import androidx.navigation.fragment.findNavController
 import com.emma.mycollaborators20.R
 import com.emma.mycollaborators20.databinding.AddNewCollaboratorFragmentBinding
 import com.emma.mycollaborators20.model.localdb.CollaboratorDatabase
-import com.emma.mycollaborators20.viewmodel.AddNewCollaboratorViewModel
-import com.emma.mycollaborators20.viewmodel.AddNewCollaboratorViewModelFactory
 
 
 class AddNewCollaboratorFragment : Fragment() {
@@ -28,10 +26,15 @@ class AddNewCollaboratorFragment : Fragment() {
 
         val dataSource = CollaboratorDatabase.getInstance(application).collaboratorDatabaseDao
         
-        val viewModelFactory = AddNewCollaboratorViewModelFactory(dataSource, application)
+        val viewModelFactory =
+            AddNewCollaboratorViewModelFactory(
+                dataSource,
+                application
+            )
 
         val addCollaboratorListViewModel = ViewModelProvider(this,
             viewModelFactory).get(AddNewCollaboratorViewModel::class.java)
+
         binding.setLifecycleOwner(this)
 
         binding.AddNewButton.setOnClickListener {
@@ -49,8 +52,6 @@ class AddNewCollaboratorFragment : Fragment() {
             addCollaboratorListViewModel.addCollaborator(name, mail, lat ,log)
             findNavController().navigate(R.id.action_addNewCollaboratorFragment_to_addedCollaboratorFragment)
         }
-
-
         binding.addNewCollaboratorViewModelFromLayout = addCollaboratorListViewModel
 
         return binding.root

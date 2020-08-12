@@ -8,13 +8,13 @@
 
         <variable
             name="collaboratorListViewModelFromLayout"
-            type="com.emma.mycollaborators20.viewmodel.CollaboratorListViewModel" />
+            type="com.emma.mycollaborators20.viewViewModel.ui.fragments.collaboratorlist.CollaboratorListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.ui.fragments.CollaboratorListFragment">
+        tools:context=".viewViewModel.ui.fragments.collaboratorlist.CollaboratorListFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/collaboratorRV"

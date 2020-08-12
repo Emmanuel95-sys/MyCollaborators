@@ -1,4 +1,4 @@
-package com.emma.mycollaborators20.view.ui.fragments
+package com.emma.mycollaborators20.viewViewModel.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

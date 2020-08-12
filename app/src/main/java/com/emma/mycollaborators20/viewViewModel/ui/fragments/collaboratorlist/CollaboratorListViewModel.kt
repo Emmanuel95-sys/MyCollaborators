@@ -1,10 +1,8 @@
-package com.emma.mycollaborators20.viewmodel
+package com.emma.mycollaborators20.viewViewModel.ui.fragments.collaboratorlist
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import com.emma.mycollaborators20.model.localdb.CollaboratorDatabaseDao
-import com.emma.mycollaborators20.model.localdb.CollaboratorRoom
 import kotlinx.coroutines.*
 
 class CollaboratorListViewModel (val database : CollaboratorDatabaseDao,

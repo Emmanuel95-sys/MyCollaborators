@@ -1,4 +1,4 @@
-package com.emma.mycollaborators20.view.adapters
+package com.emma.mycollaborators20.viewViewModel.adapters
 
 import android.view.LayoutInflater
 import android.view.View

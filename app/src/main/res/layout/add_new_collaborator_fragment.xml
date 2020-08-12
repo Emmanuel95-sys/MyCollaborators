@@ -6,14 +6,14 @@
     <data>
         <variable
             name = "addNewCollaboratorViewModelFromLayout"
-            type="com.emma.mycollaborators20.viewmodel.AddNewCollaboratorViewModel"
+            type="com.emma.mycollaborators20.viewViewModel.ui.fragments.addnewcollaborator.AddNewCollaboratorViewModel"
             />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ui.fragments.AddNewCollaboratorFragment">
+    tools:context=".viewViewModel.ui.fragments.addnewcollaborator.AddNewCollaboratorFragment">
 
 
     <TextView

@@ -1,4 +1,4 @@
-package com.emma.mycollaborators20.viewmodel
+package com.emma.mycollaborators20.viewViewModel.ui.fragments.Login
 
 import androidx.lifecycle.map
 import androidx.lifecycle.ViewModel
