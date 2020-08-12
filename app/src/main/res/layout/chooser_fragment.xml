@@ -21,8 +21,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mis colaboradores"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/AddCollaboratorButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,10 +32,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Agregar Colaborador"
+            app:layout_constraintBottom_toTopOf="@+id/LogOutButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/MyCollaboratorsButton" />
+
+        <Button
+            android:id="@+id/LogOutButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cerrar sesión"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/MyCollaboratorsButton" />
+            app:layout_constraintTop_toBottomOf="@+id/AddCollaboratorButton" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

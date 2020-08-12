@@ -44,11 +44,16 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = findNavController()
+
         viewModel.authenticationState.observe(viewLifecycleOwner, Observer { authenticationState ->
             when(authenticationState){
-               // findNavController().navigate(R.id.ac)
+               LoginViewModel.AuthenticationState.AUTHENTICATED -> {
+                   findNavController().navigate(R.id.action_loginFragment_to_chooserFragment)
+               }
             }
         })
+
+
     }
 
     private fun launchSignInFlow() {
