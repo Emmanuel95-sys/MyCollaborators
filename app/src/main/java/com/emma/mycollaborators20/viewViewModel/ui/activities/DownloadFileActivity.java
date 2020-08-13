@@ -17,9 +17,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.emma.mycollaborators20.R;
 import com.emma.mycollaborators20.model.Collaborator;
-import com.emma.mycollaborators20.model.localdb.CollaboratorRoom;
 import com.emma.mycollaborators20.utils.ReadJson;
 import com.emma.mycollaborators20.utils.UnzipUtil;
+import com.emma.mycollaborators20.viewViewModel.ui.fragments.addnewcollaborator.AddNewCollaboratorViewModel;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -40,7 +41,8 @@ public class DownloadFileActivity extends AppCompatActivity {
 
     Button actionButton;
     TextView JsonStringTv;
-
+    //create a new reference to the view model
+    AddNewCollaboratorViewModel addNewCollaboratorViewModel;
 
     private ProgressDialog mProgressDialog;
 
@@ -58,6 +60,13 @@ public class DownloadFileActivity extends AppCompatActivity {
 
         actionButton = findViewById(R.id.downloadButton);
         JsonStringTv = findViewById(R.id.tvJsonString);
+
+        //datasource
+        //CollaboratorDatabaseDao dataSource =  CollaboratorDatabase//.getInstance(this).getCollaboratorDatabaseDao();
+
+//
+//        AddNewCollaboratorViewModelFactory addNewCollaboratorViewModelFactory =
+//                new AddNewCollaboratorViewModelFactory(dataSource,this.getApplication());
 
         checkPermissions();
 
@@ -83,7 +92,7 @@ public class DownloadFileActivity extends AppCompatActivity {
         }
     }
 
-    private void downloadFile() {
+    private void downloadFile() { //here we need to pass the url as a String parameter
         if(ContextCompat.
                 checkSelfPermission
                         (this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
@@ -290,51 +299,38 @@ public class DownloadFileActivity extends AppCompatActivity {
         protected void onPostExecute(final String response) {
             JsonStringTv.setText(response);
             //persist data
-            actionButton.setText("Persist data");
+            actionButton.setText("Transform Data to collection");
             actionButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    persistData(response);
+                    transformDataToCollection(response);
                 }
             });
 
         }
     }
 
-    private void persistData(String response) {
+    //
+    private void transformDataToCollection(final String response) {
         //send to fragment
         //create a list of object from json response
-        List<Collaborator> collaborators = extractCollaboratorsFromJsonString(response);
+        final List<Collaborator> collaborators = extractCollaboratorsFromJsonString(response);
         //persist the data in local database
-        persistDataInRoom(collaborators);
+        JsonStringTv.setText(collaborators.toString());
+        actionButton.setText("Persist data");
 
+        actionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                persistDataInRoom(collaborators);
+            }
+        });
         //draw the items in a rv
     }
 
     private void persistDataInRoom(List<Collaborator> collaborators) {
-        //new PersistDataInRoomAsync().execute(collaborators);
+        //
     }
-
-
-    private class PersistDataInRoomAsync extends AsyncTask< List<Collaborator>, Void , List<CollaboratorRoom>> {
-
-        @Override
-        protected List<CollaboratorRoom> doInBackground(List<Collaborator>... lists) {
-            List collaboratorsJSONFormat = lists[0];
-
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(List<CollaboratorRoom> collaboratorRooms) {
-            super.onPostExecute(collaboratorRooms);
-
-        }
-    }
-
 
 }
-
-
 
