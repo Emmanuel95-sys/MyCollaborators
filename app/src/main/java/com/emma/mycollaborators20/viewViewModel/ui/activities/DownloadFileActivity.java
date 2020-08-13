@@ -133,6 +133,7 @@ public class DownloadFileActivity extends AppCompatActivity {
                 URL url = new URL(aurl[0]);
                 URLConnection conexion = url.openConnection();
                 conexion.connect();
+
                 int lenghtOfFile = conexion.getContentLength();
                 InputStream input = new BufferedInputStream(url.openStream());
 

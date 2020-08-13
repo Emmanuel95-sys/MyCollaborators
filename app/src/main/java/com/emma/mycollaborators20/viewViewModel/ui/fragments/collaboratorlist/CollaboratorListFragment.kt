@@ -49,6 +49,8 @@ class CollaboratorListFragment : Fragment() {
 
         //Set Menu
         setHasOptionsMenu(true)
+        //call web service
+        collaboratorListViewModel.callWebService()
 
         binding.setLifecycleOwner(this)
         return binding.root
