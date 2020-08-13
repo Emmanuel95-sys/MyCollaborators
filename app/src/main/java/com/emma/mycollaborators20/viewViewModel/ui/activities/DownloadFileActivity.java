@@ -17,9 +17,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.emma.mycollaborators20.R;
 import com.emma.mycollaborators20.model.Collaborator;
+import com.emma.mycollaborators20.model.localdb.CollaboratorDatabase;
+import com.emma.mycollaborators20.model.localdb.CollaboratorDatabaseDao;
 import com.emma.mycollaborators20.utils.ReadJson;
 import com.emma.mycollaborators20.utils.UnzipUtil;
 import com.emma.mycollaborators20.viewViewModel.ui.fragments.addnewcollaborator.AddNewCollaboratorViewModel;
+import com.emma.mycollaborators20.viewViewModel.ui.fragments.addnewcollaborator.AddNewCollaboratorViewModelFactory;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -42,7 +45,7 @@ public class DownloadFileActivity extends AppCompatActivity {
     Button actionButton;
     TextView JsonStringTv;
     //create a new reference to the view model
-    AddNewCollaboratorViewModel addNewCollaboratorViewModel;
+//    AddNewCollaboratorViewModel addNewCollaboratorViewModel;
 
     private ProgressDialog mProgressDialog;
 
@@ -62,9 +65,9 @@ public class DownloadFileActivity extends AppCompatActivity {
         JsonStringTv = findViewById(R.id.tvJsonString);
 
         //datasource
-        //CollaboratorDatabaseDao dataSource =  CollaboratorDatabase//.getInstance(this).getCollaboratorDatabaseDao();
+//        CollaboratorDatabaseDao dataSource = new CollaboratorDatabase().getInstance(this).getCollaboratorDatabaseDao();
 
-//
+
 //        AddNewCollaboratorViewModelFactory addNewCollaboratorViewModelFactory =
 //                new AddNewCollaboratorViewModelFactory(dataSource,this.getApplication());
 
@@ -322,6 +325,9 @@ public class DownloadFileActivity extends AppCompatActivity {
         actionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //intent to the fragment
+                //persiste data there
+                //send the data 
                 persistDataInRoom(collaborators);
             }
         });
