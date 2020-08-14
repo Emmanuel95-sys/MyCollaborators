@@ -84,7 +84,7 @@ dependencies {
     implementation "com.google.code.gson:gson:2.8.5"
 
     //googgle play services
-    implementation 'com.google.android.gms:play-services-maps:16.1.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
 
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:2.4.0"

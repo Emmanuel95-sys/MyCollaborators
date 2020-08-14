@@ -1,13 +1,17 @@
 package com.emma.mycollaborators20.viewViewModel.ui.fragments.collaboratorlist
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.view.*
-import androidx.fragment.app.Fragment
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-
 import com.emma.mycollaborators20.R
 import com.emma.mycollaborators20.databinding.CollaboratorListFragmentBinding
 import com.emma.mycollaborators20.model.localdb.CollaboratorDatabase
@@ -48,19 +52,33 @@ class CollaboratorListFragment : Fragment() {
                 adapter.collaboratorsData = it
         }
         })
+        //map list navigation
+        binding.collaboratorMap.setOnClickListener {
+            findNavController().navigate(R.id.action_collaboratorListFragment_to_collaboratorMapListFragment)
+        }
 
         //Set Menu
         setHasOptionsMenu(true)
 
+        //check permissions
+        checkPermissions()
 
         binding.setLifecycleOwner(this)
         return binding.root
     }
 
     private fun callWebService(){
-        //call web service
-        collaboratorListViewModel.callWebService()
-
+        if (ContextCompat.checkSelfPermission(
+                requireNotNull(this.activity),
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            collaboratorListViewModel.callWebService()
+        } else {
+            Toast.makeText(this.activity, "Please enable the permissions",
+                Toast.LENGTH_LONG).show()
+            checkPermissions()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -73,5 +91,16 @@ class CollaboratorListFragment : Fragment() {
             R.id.call_web_service -> callWebService()
         }
         return true
+    }
+
+    private fun checkPermissions() {
+        if (Build.VERSION.SDK_INT > 22) {
+            requestPermissions(
+                arrayOf(
+                    "android.permission.READ_EXTERNAL_STORAGE",
+                    "android.permission.WRITE_EXTERNAL_STORAGE"
+                ), 1
+            )
+        }
     }
 }

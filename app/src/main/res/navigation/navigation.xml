@@ -26,6 +26,9 @@
         <action
             android:id="@+id/action_collaboratorListFragment_to_chooserFragment"
             app:destination="@id/chooserFragment" />
+        <action
+            android:id="@+id/action_collaboratorListFragment_to_collaboratorMapListFragment"
+            app:destination="@id/collaboratorMapListFragment" />
     </fragment>
     <fragment
         android:id="@+id/addNewCollaboratorFragment"
@@ -56,4 +59,9 @@
             android:id="@+id/action_loginFragment_to_chooserFragment"
             app:destination="@id/chooserFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/collaboratorMapListFragment"
+        android:name="com.emma.mycollaborators20.viewViewModel.ui.fragments.collaboratorMapList.CollaboratorMapListFragment"
+        android:label="fragment_collaborator_map_list"
+        tools:layout="@layout/fragment_collaborator_map_list" />
 </navigation>

@@ -2,7 +2,7 @@ package com.emma.mycollaborators20.viewViewModel.ui.fragments.Login
 
 import androidx.lifecycle.map
 import androidx.lifecycle.ViewModel
-import com.emma.mycollaborators20.viewmodel.LiveData.FirebaseUserLiveData
+import com.emma.mycollaborators20.LiveData.FirebaseUserLiveData
 
 class LoginViewModel : ViewModel() {
     enum class AuthenticationState {

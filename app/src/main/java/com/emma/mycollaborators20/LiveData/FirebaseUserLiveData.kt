@@ -1,4 +1,4 @@
-package com.emma.mycollaborators20.viewmodel.LiveData
+package com.emma.mycollaborators20.LiveData
 
 import androidx.lifecycle.LiveData
 import com.google.firebase.auth.FirebaseAuth
