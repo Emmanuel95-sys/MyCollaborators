@@ -12,13 +12,9 @@ import com.emma.mycollaborators20.utils.ReadJsonKt
 import com.emma.mycollaborators20.utils.UnzipUtilKt
 import com.emma.mycollaborators20.utils.Utils
 import kotlinx.coroutines.*
-import java.io.BufferedInputStream
-import java.io.FileOutputStream
-import java.lang.Exception
-import java.net.URL
 
-//check if this works
- var zipFile: String = Environment.getExternalStorageDirectory().toString() + "/test.zip"
+
+var zipFile: String = Environment.getExternalStorageDirectory().toString() + "/test.zip"
 var unzipFileLocation = Environment.getExternalStorageDirectory().toString() + "/testunzip/"
 
 class CollaboratorListViewModel (
@@ -75,8 +71,8 @@ class CollaboratorListViewModel (
                 newCollaborator.mail = collaboratorWS.mail
 
                 val location = collaboratorWS.location
-                var lat = location.lat
-                var log = location.log
+                val lat = location.lat
+                val log = location.log
 
                 newCollaborator.log = log
                 newCollaborator.lat = lat
