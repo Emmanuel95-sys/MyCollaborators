@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_collaboratorListFragment_to_collaboratorMapListFragment"
             app:destination="@id/collaboratorMapListFragment" />
+        <action
+            android:id="@+id/action_collaboratorListFragment_to_collaboratorMapDetailFragment"
+            app:destination="@id/collaboratorMapDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/addNewCollaboratorFragment"
@@ -64,4 +67,9 @@
         android:name="com.emma.mycollaborators20.viewViewModel.ui.fragments.collaboratorMapList.CollaboratorMapListFragment"
         android:label="fragment_collaborator_map_list"
         tools:layout="@layout/fragment_collaborator_map_list" />
+    <fragment
+        android:id="@+id/collaboratorMapDetailFragment"
+        android:name="com.emma.mycollaborators20.viewViewModel.ui.fragments.collaboratorMapDetail.CollaboratorMapDetailFragment"
+        android:label="fragment_collaborator_map_detail"
+        tools:layout="@layout/fragment_collaborator_map_detail" />
 </navigation>

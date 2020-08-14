@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.emma.mycollaborators20.R
+import com.emma.mycollaborators20.model.CollaboratorSerializable
 import com.emma.mycollaborators20.model.localdb.CollaboratorRoom
 
-class CollaboratorAdapter :  RecyclerView.Adapter<CollaboratorAdapter.ViewHolder>() {
+class CollaboratorAdapter(val itemClickListener: ItemClickListener<CollaboratorSerializable>) :  RecyclerView.Adapter<CollaboratorAdapter.ViewHolder>() {
 
     var collaboratorsData = listOf<CollaboratorRoom>()
 
@@ -32,10 +33,25 @@ class CollaboratorAdapter :  RecyclerView.Adapter<CollaboratorAdapter.ViewHolder
         val currentCollaborator  = collaboratorsData[position]
         holder.itemCollaboratorName.text = currentCollaborator.name
         holder.itemCollaboratorEmail.text = currentCollaborator.mail
+        //click listener
+        holder.itemView.setOnClickListener {
+            val collaboratorSerializable = CollaboratorSerializable()
+
+            collaboratorSerializable.jsonId = currentCollaborator.jsonId
+            collaboratorSerializable.lat = currentCollaborator.lat
+            collaboratorSerializable.log = currentCollaborator.log
+            collaboratorSerializable.mail = currentCollaborator.mail
+            collaboratorSerializable.name = currentCollaborator.name
+
+            itemClickListener.onClick(collaboratorSerializable, position)
+        }
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         var itemCollaboratorName : TextView = itemView.findViewById(R.id.tvItemCollaboratorName)
         var itemCollaboratorEmail : TextView = itemView.findViewById(R.id.tvItemCollaboratorEmail)
     }
+
+
+
 }
