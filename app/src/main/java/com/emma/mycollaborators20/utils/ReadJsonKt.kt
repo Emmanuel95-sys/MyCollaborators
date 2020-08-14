@@ -14,7 +14,7 @@ class ReadJsonKt {
         _filepath = filepath
     }
 
-    fun readJson(): String? {
+    fun readJson(): String?  {
         val file = File(_filepath, _fileName)
         var fileReader: FileReader? = null
         try {
@@ -48,7 +48,6 @@ class ReadJsonKt {
             e.printStackTrace()
         }
         // This responce will have Json Format String
-        //Log.i(TAG, outputString.toString());
         return outputString.toString()
     }
 

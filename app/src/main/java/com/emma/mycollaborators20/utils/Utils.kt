@@ -34,10 +34,6 @@ open class Utils {
                 }
                 outputStream.close()
                 inputStream.close()
-                var unZipper = UnzipUtilKt()
-                unZipper.UnzipUtil(zipFile, unzipFileLocation)
-                unZipper.unZip()
-
             }catch (e: Exception) {
                 var error = e.toString()
                 Log.i("Download", error)

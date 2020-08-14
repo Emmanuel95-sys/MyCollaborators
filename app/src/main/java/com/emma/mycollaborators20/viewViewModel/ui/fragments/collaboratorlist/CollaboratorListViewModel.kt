@@ -5,7 +5,11 @@ import android.os.Environment
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import com.emma.mycollaborators20.model.localdb.CollaboratorDatabaseDao
+import com.emma.mycollaborators20.model.localdb.CollaboratorRoom
 import com.emma.mycollaborators20.model.restapi.ServiceInterface.FileApiService
+import com.emma.mycollaborators20.utils.QueryUtilsKt
+import com.emma.mycollaborators20.utils.ReadJsonKt
+import com.emma.mycollaborators20.utils.UnzipUtilKt
 import com.emma.mycollaborators20.utils.Utils
 import kotlinx.coroutines.*
 import java.io.BufferedInputStream
@@ -29,23 +33,65 @@ class CollaboratorListViewModel (
     var collaborators = database.getAllCollaborators()
     //var response string
     var responseString : String = ""
+
     //web service instance
     private val webService = FileApiService()
-
-    fun initializeWebFileSequence(){
-
-    }
 
     fun callWebService() {
         uiScope.launch {
             val response = webService.getResponse().await()
             val fileURl = response.data.file
             Log.i("CollabViewModel", fileURl)
-            var utils = Utils()
+            val utils = Utils()
             utils.downloadFile(fileURl)
+            unZipFileVM()
         }
     }
 
+    private suspend fun unZipFileVM(){
+        val unZipper = UnzipUtilKt()
+        unZipper.UnzipUtil(zipFile, unzipFileLocation)
+        val fileName =   unZipper.unZip()
+        readFile(fileName)
+    }
+
+    private suspend fun readFile(fileName: String?){
+        val fileReader = ReadJsonKt()
+        fileReader.ReadJsonKt(unzipFileLocation, fileName)
+        val jsonString = fileReader.readJson()
+        createListFromJsonString(jsonString)
+    }
+
+    private suspend fun createListFromJsonString(jsonString : String?){
+        val queryUtils = QueryUtilsKt()
+        val collaboratorsFromWS =
+            queryUtils.extractCollaboratorsFromJsonString(jsonString)
+        Log.i("VIEWMODEL" , collaboratorsFromWS.toString())
+        if (collaboratorsFromWS != null) {
+            for (collaboratorWS in collaboratorsFromWS){
+                val newCollaborator = CollaboratorRoom()
+                newCollaborator.name  = collaboratorWS.name
+                newCollaborator.jsonId = collaboratorWS.id
+                newCollaborator.mail = collaboratorWS.mail
+
+                val location = collaboratorWS.location
+                var lat = location.lat
+                var log = location.log
+
+                newCollaborator.log = log
+                newCollaborator.lat = lat
+                insert(newCollaborator)
+            }
+        }
+
+    }
+
+    private suspend fun insert(newCollaborator : CollaboratorRoom){
+        withContext(Dispatchers.IO){
+            database.insert(newCollaborator)
+        }
+    }
+    //add collaborators from web service
 
 
 

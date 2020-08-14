@@ -46,8 +46,6 @@ application: Application) : AndroidViewModel(application) {
     private suspend fun insert(newCollaborator : CollaboratorRoom){
         withContext(Dispatchers.IO){
             database.insert(newCollaborator)
-            var collaboratorsFromDb = database.getAllCollaborators()
-            Log.i("clearROOM", collaboratorsFromDb.toString())
         }
     }
 
@@ -61,8 +59,6 @@ application: Application) : AndroidViewModel(application) {
     private suspend fun clear(){
         withContext(Dispatchers.IO){
             database.clear()
-            var collaboratorsFromDb = database.getAllCollaborators()
-            Log.i("clearROOM", collaboratorsFromDb.toString())
         }
     }
 

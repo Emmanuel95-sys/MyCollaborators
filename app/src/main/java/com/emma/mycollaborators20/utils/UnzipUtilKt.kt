@@ -1,6 +1,7 @@
 package com.emma.mycollaborators20.utils
 
 import android.util.Log
+import com.emma.mycollaborators20.viewViewModel.ui.fragments.collaboratorlist.zipFile
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
@@ -10,6 +11,7 @@ import java.util.zip.ZipInputStream
 open class UnzipUtilKt {
     private var _zipFile: String? = null
     private var _location: String? = null
+    private var zipFileName : String ? = null
     private val TAG = "UnzipUtil"
 
     fun UnzipUtil(zipFile: String?, location: String?) {
@@ -18,7 +20,7 @@ open class UnzipUtilKt {
         _dirChecker("")
     }
 
-    fun unZip() {
+    fun unZip(): String? {
         try {
             Log.i(TAG, "initializing unzipping")
             val fin = FileInputStream(_zipFile)
@@ -31,6 +33,7 @@ open class UnzipUtilKt {
                 } else {
                     val fout =
                         FileOutputStream(_location + unzipFile!!.name)
+                    zipFileName = unzipFile!!.name
                     var c = zin.read()
                     while (c != -1) {
                         fout.write(c)
@@ -47,10 +50,10 @@ open class UnzipUtilKt {
                 }
             }
             zin.close()
-
         } catch (e: Exception) {
             Log.i(TAG + "Decompress", "unzip", e)
         }
+        return zipFileName
     }
 
     private fun _dirChecker(dir: String) {
