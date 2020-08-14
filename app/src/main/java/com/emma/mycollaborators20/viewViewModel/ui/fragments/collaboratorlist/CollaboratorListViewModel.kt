@@ -15,7 +15,7 @@ import java.net.URL
 
 //check if this works
  var zipFile: String = Environment.getExternalStorageDirectory().toString() + "/test.zip"
- var unzipFileLocation = Environment.getExternalStorageDirectory().toString() + "/testunzip/"
+var unzipFileLocation = Environment.getExternalStorageDirectory().toString() + "/testunzip/"
 
 class CollaboratorListViewModel (
     private val database : CollaboratorDatabaseDao,
@@ -27,11 +27,16 @@ class CollaboratorListViewModel (
     }
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
     var collaborators = database.getAllCollaborators()
-
+    //var response string
+    var responseString : String = ""
     //web service instance
     private val webService = FileApiService()
 
-    fun callWebService(){
+    fun initializeWebFileSequence(){
+
+    }
+
+    fun callWebService() {
         uiScope.launch {
             val response = webService.getResponse().await()
             val fileURl = response.data.file
@@ -41,7 +46,7 @@ class CollaboratorListViewModel (
         }
     }
 
-    
+
 
 
 }

@@ -16,6 +16,8 @@ import com.emma.mycollaborators20.viewViewModel.adapters.CollaboratorAdapter
 
 class CollaboratorListFragment : Fragment() {
 
+    private lateinit var collaboratorListViewModel: CollaboratorListViewModel
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
         //put all the dependencies wrap ALL layouts in a layout tag
@@ -32,7 +34,7 @@ class CollaboratorListFragment : Fragment() {
                 application
             )
         //create a view model
-        val collaboratorListViewModel =
+        collaboratorListViewModel =
             ViewModelProvider(
                 this, viewModelFactory).get(CollaboratorListViewModel::class.java)
         //view model layout variable
@@ -49,11 +51,16 @@ class CollaboratorListFragment : Fragment() {
 
         //Set Menu
         setHasOptionsMenu(true)
-        //call web service
-        collaboratorListViewModel.callWebService()
+
 
         binding.setLifecycleOwner(this)
         return binding.root
+    }
+
+    private fun callWebService(){
+        //call web service
+        collaboratorListViewModel.callWebService()
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -63,7 +70,7 @@ class CollaboratorListFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.call_web_service -> findNavController().navigate(R.id.action_collaboratorListFragment_to_downloadFileActivity)//callWebService()
+            R.id.call_web_service -> callWebService()
         }
         return true
     }

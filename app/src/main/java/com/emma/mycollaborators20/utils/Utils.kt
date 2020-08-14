@@ -1,6 +1,8 @@
 package com.emma.mycollaborators20.utils
 
+import android.os.Environment
 import android.util.Log
+import com.emma.mycollaborators20.viewViewModel.ui.fragments.collaboratorlist.unzipFileLocation
 import com.emma.mycollaborators20.viewViewModel.ui.fragments.collaboratorlist.zipFile
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -9,8 +11,9 @@ import java.io.FileOutputStream
 import java.lang.Exception
 import java.net.URL
 
-open class Utils {
 
+
+open class Utils {
      suspend fun  downloadFile(urlString :String){
         withContext(Dispatchers.IO){
             try{
@@ -31,6 +34,9 @@ open class Utils {
                 }
                 outputStream.close()
                 inputStream.close()
+                var unZipper = UnzipUtilKt()
+                unZipper.UnzipUtil(zipFile, unzipFileLocation)
+                unZipper.unZip()
 
             }catch (e: Exception) {
                 var error = e.toString()

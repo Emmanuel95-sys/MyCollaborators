@@ -26,9 +26,6 @@
         <action
             android:id="@+id/action_collaboratorListFragment_to_chooserFragment"
             app:destination="@id/chooserFragment" />
-        <action
-            android:id="@+id/action_collaboratorListFragment_to_downloadFileActivity"
-            app:destination="@id/downloadFileActivity" />
     </fragment>
     <fragment
         android:id="@+id/addNewCollaboratorFragment"
@@ -59,8 +56,4 @@
             android:id="@+id/action_loginFragment_to_chooserFragment"
             app:destination="@id/chooserFragment" />
     </fragment>
-    <activity
-        android:id="@+id/downloadFileActivity"
-        android:name="com.emma.mycollaborators20.viewViewModel.ui.activities.DownloadFileActivity"
-        android:label="DownloadFileActivity" />
 </navigation>
