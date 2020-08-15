@@ -14,8 +14,7 @@ import com.google.android.gms.maps.SupportMapFragment
 class CollaboratorMapListFragment : Fragment(), OnMapReadyCallback {
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_collaborator_map_list,
             container, false)
     }

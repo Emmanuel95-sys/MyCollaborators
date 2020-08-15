@@ -25,7 +25,7 @@ import com.emma.mycollaborators20.viewViewModel.adapters.ItemClickListener
 class CollaboratorListFragment : Fragment(),ItemClickListener<CollaboratorSerializable> {
 
     private lateinit var collaboratorListViewModel: CollaboratorListViewModel
-
+   
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
         //put all the dependencies wrap ALL layouts in a layout tag
@@ -38,10 +38,7 @@ class CollaboratorListFragment : Fragment(),ItemClickListener<CollaboratorSerial
             CollaboratorDatabase.getInstance(application).collaboratorDatabaseDao
         //view model factory reference
         val viewModelFactory =
-            CollaboratorListViewModelFactory(
-                dataSource,
-                application
-            )
+            CollaboratorListViewModelFactory(dataSource, application)
         //create a view model
         collaboratorListViewModel =
             ViewModelProvider(
@@ -55,17 +52,16 @@ class CollaboratorListFragment : Fragment(),ItemClickListener<CollaboratorSerial
         collaboratorListViewModel.collaborators.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.collaboratorsData = it
-        }
+            }
         })
+
         //map list navigation
         binding.collaboratorMap.setOnClickListener {
             findNavController().navigate(
                 R.id.action_collaboratorListFragment_to_collaboratorMapListFragment)
         }
-
         //Set Menu
         setHasOptionsMenu(true)
-
         //check permissions
         checkPermissions()
 
@@ -111,21 +107,5 @@ class CollaboratorListFragment : Fragment(),ItemClickListener<CollaboratorSerial
             R.id.action_collaboratorListFragment_to_collaboratorMapDetailFragment,
             clickedItem)
     }
-
-    //capturing object and send to detail fragment
-//    override fun onClick(listObject: CollaboratorRoom, position: Int) {
-//        val collaboratorSerializable = CollaboratorSerializable()
-//        collaboratorSerializable.jsonId = listObject.jsonId
-//        collaboratorSerializable.lat = listObject.lat
-//        collaboratorSerializable.log = listObject.log
-//        collaboratorSerializable.mail = listObject.mail
-//        collaboratorSerializable.name = listObject.name
-//
-//        val clickedItem = bundleOf("collaborator" to collaboratorSerializable)
-//        findNavController().navigate(
-//            R.id.action_collaboratorListFragment_to_collaboratorMapDetailFragment,
-//            clickedItem)
-//    }
-
 
 }
