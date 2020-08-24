@@ -13,12 +13,12 @@ import retrofit2.http.GET
 const val  baseUrl = "https://dl.dropboxusercontent.com/s/5u21281sca8gj94/"
 interface FileApiService {
     @GET("getFile.json?dl=0")
-    fun getResponse(
+    fun getResponseAsync(
     ) : Deferred<FileWebServiceResponse>
     companion object{
         operator fun invoke() : FileApiService{
             val requestInterceptor = Interceptor{chain ->
-                var url = chain.request()
+                val url = chain.request()
                     .url()
                     .newBuilder()
                     .build()

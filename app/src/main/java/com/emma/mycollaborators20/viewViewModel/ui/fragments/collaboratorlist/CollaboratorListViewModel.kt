@@ -20,22 +20,23 @@ var unzipFileLocation = Environment.getExternalStorageDirectory().toString() + "
 class CollaboratorListViewModel (
     private val database : CollaboratorDatabaseDao,
     application: Application): AndroidViewModel(application) {
+
     private var viewModelJob = Job()
+
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
     }
+
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
     var collaborators = database.getAllCollaborators()
-    //var response string
-    var responseString : String = ""
 
     //web service instance
     private val webService = FileApiService()
 
     fun callWebService() {
         uiScope.launch {
-            val response = webService.getResponse().await()
+            val response = webService.getResponseAsync().await()
             val fileURl = response.data.file
             Log.i("CollabViewModel", fileURl)
             val utils = Utils()
@@ -70,9 +71,9 @@ class CollaboratorListViewModel (
                 newCollaborator.jsonId = collaboratorWS.id
                 newCollaborator.mail = collaboratorWS.mail
 
-                val location = collaboratorWS.location
-                val lat = location.lat
-                val log = location.log
+                val locationWs = collaboratorWS.location
+                val lat = locationWs.lat
+                val log = locationWs.log
 
                 newCollaborator.log = log
                 newCollaborator.lat = lat

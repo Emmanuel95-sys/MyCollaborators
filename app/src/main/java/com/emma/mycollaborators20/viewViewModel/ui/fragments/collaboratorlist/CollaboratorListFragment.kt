@@ -22,10 +22,11 @@ import com.emma.mycollaborators20.viewViewModel.adapters.CollaboratorAdapter
 import com.emma.mycollaborators20.viewViewModel.adapters.ItemClickListener
 
 
-class CollaboratorListFragment : Fragment(),ItemClickListener<CollaboratorSerializable> {
+class CollaboratorListFragment : Fragment(),
+    ItemClickListener<CollaboratorSerializable> {
 
     private lateinit var collaboratorListViewModel: CollaboratorListViewModel
-   
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
         //put all the dependencies wrap ALL layouts in a layout tag
@@ -83,7 +84,6 @@ class CollaboratorListFragment : Fragment(),ItemClickListener<CollaboratorSerial
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.overflow_menu, menu)
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

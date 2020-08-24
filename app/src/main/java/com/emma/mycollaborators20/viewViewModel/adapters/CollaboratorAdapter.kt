@@ -9,15 +9,19 @@ import com.emma.mycollaborators20.R
 import com.emma.mycollaborators20.model.CollaboratorSerializable
 import com.emma.mycollaborators20.model.localdb.CollaboratorRoom
 
-class CollaboratorAdapter(val itemClickListener: ItemClickListener<CollaboratorSerializable>) :  RecyclerView.Adapter<CollaboratorAdapter.ViewHolder>() {
+class CollaboratorAdapter(val itemClickListener:
+                          ItemClickListener<CollaboratorSerializable>) :
+    RecyclerView.Adapter<CollaboratorAdapter.ViewHolder>() {
 
     var collaboratorsData = listOf<CollaboratorRoom>()
 
     //notifying RV about changes
+    //setting the value of the list after observing
     set(value){
         field = value
         notifyDataSetChanged()
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val view = layoutInflater.inflate(R.layout.collaborator_list_item,
@@ -35,8 +39,8 @@ class CollaboratorAdapter(val itemClickListener: ItemClickListener<CollaboratorS
         holder.itemCollaboratorEmail.text = currentCollaborator.mail
         //click listener
         holder.itemView.setOnClickListener {
+            //creating serializable object
             val collaboratorSerializable = CollaboratorSerializable()
-
             collaboratorSerializable.jsonId = currentCollaborator.jsonId
             collaboratorSerializable.lat = currentCollaborator.lat
             collaboratorSerializable.log = currentCollaborator.log

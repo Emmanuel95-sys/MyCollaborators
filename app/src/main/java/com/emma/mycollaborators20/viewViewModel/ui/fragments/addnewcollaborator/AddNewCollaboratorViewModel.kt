@@ -7,8 +7,9 @@ import com.emma.mycollaborators20.model.localdb.CollaboratorDatabaseDao
 import com.emma.mycollaborators20.model.localdb.CollaboratorRoom
 import kotlinx.coroutines.*
 
-class AddNewCollaboratorViewModel(val database: CollaboratorDatabaseDao,
-application: Application) : AndroidViewModel(application) {
+class AddNewCollaboratorViewModel(
+    private val database: CollaboratorDatabaseDao,
+    application: Application) : AndroidViewModel(application) {
     //create a job allows to cancel all co-routines created by this view model
     private var viewModelJob = Job()
     //web service instance
@@ -20,8 +21,6 @@ application: Application) : AndroidViewModel(application) {
     }
     //Define the scope of the co-routines
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
-    //reference to current collaborator?
-    //private var collaboratorFromDB = database.getCollaborator(15)
 
     //reference to collaborators from room
     //var collaboratorsFromDb = database.getAllCollaborators()
@@ -33,7 +32,7 @@ application: Application) : AndroidViewModel(application) {
             if(name != "" && name != null){
                 newCollaborator.name = name
             }
-            if(mail != ""&& mail != null){
+            if(mail != "" && mail != null){
                 newCollaborator.mail = mail
             }
             newCollaborator.lat = lat
